@@ -1,1 +1,1053 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-light: #f8fafc;
+            --text-gray: #cbd5e1;
+            --accent: #22d3ee;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(100, 116, 139, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent);
+            background: rgba(34, 211, 238, 0.1);
+        }
+
+        /* Page Container */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Home Page */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.3), transparent);
+            top: -250px;
+            right: -250px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(34, 211, 238, 0.2), transparent);
+            bottom: -200px;
+            left: -200px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(30px, 30px) rotate(180deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+        }
+
+        .hero .tagline {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            color: var(--text-light);
+        }
+
+        .cta-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(34, 211, 238, 0.3);
+        }
+
+        .cta-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .cta-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Content Pages */
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .page-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--text-gray);
+        }
+
+        /* About Page */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .about-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(100, 116, 139, 0.2);
+            transition: all 0.3s;
+        }
+
+        .about-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .about-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .about-card p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        .skills-section {
+            margin-top: 4rem;
+        }
+
+        .skills-section h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .skill-category h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: var(--text-gray);
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(100, 116, 139, 0.1);
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Projects Page */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(100, 116, 139, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover .project-image::after {
+            opacity: 1;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.5rem;
+        }
+
+        .project-content p {
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--accent);
+        }
+
+        /* Experience Page */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 15px;
+            width: calc(50% - 40px);
+            border: 1px solid rgba(100, 116, 139, 0.2);
+            transition: all 0.3s;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--primary);
+            transform: scale(1.02);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 30px;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border: 4px solid var(--bg-dark);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .timeline-content h4 {
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .timeline-content p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Blog Page */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(100, 116, 139, 0.2);
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+        }
+
+        .blog-image {
+            height: 180px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .blog-card:nth-child(2n) .blog-image {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+        }
+
+        .blog-card:nth-child(3n) .blog-image {
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: var(--text-gray);
+        }
+
+        .blog-content h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.5rem;
+        }
+
+        .blog-content p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(100, 116, 139, 0.2);
+            color: var(--text-gray);
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .social-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 0.5rem;
+            }
+
+            nav a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-content {
+                width: calc(100% - 40px);
+                margin-left: 40px !important;
+            }
+
+            .timeline-dot {
+                left: 0;
+            }
+
+            .cta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home" class="nav-link active" onclick="showPage('home')">Home</a></li>
+            <li><a href="#about" class="nav-link" onclick="showPage('about')">About</a></li>
+            <li><a href="#projects" class="nav-link" onclick="showPage('projects')">Projects</a></li>
+            <li><a href="#experience" class="nav-link" onclick="showPage('experience')">Experience</a></li>
+            <li><a href="#blog" class="nav-link" onclick="showPage('blog')">Blog</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Your Name</h1>
+                <p class="subtitle">Full Stack Developer & Creative Technologist</p>
+                <p class="tagline">Building digital experiences that inspire and innovate. Passionate about clean code, beautiful design, and solving complex problems.</p>
+                
+                <div class="cta-grid">
+                    <a href="#about" class="cta-card" onclick="showPage('about')">
+                        <div class="icon">👨‍💻</div>
+                        <h3>About Me</h3>
+                        <p>Learn about my journey</p>
+                    </a>
+                    <a href="#projects" class="cta-card" onclick="showPage('projects')">
+                        <div class="icon">🚀</div>
+                        <h3>Projects</h3>
+                        <p>View my work</p>
+                    </a>
+                    <a href="#experience" class="cta-card" onclick="showPage('experience')">
+                        <div class="icon">💼</div>
+                        <h3>Experience</h3>
+                        <p>My career path</p>
+                    </a>
+                    <a href="#blog" class="cta-card" onclick="showPage('blog')">
+                        <div class="icon">✍️</div>
+                        <h3>Blog</h3>
+                        <p>Read my thoughts</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <section class="content-section">
+            <div class="page-header">
+                <h1 class="page-title">About Me</h1>
+                <p class="page-subtitle">Getting to know the person behind the code</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>🎯 My Mission</h3>
+                    <p>I'm dedicated to creating innovative solutions that make a difference. With a passion for both technology and design, I bridge the gap between functionality and aesthetics to deliver exceptional digital experiences.</p>
+                </div>
+                <div class="about-card">
+                    <h3>🌟 What Drives Me</h3>
+                    <p>I believe in continuous learning and pushing boundaries. Every project is an opportunity to explore new technologies, refine my craft, and contribute to the ever-evolving world of web development.</p>
+                </div>
+                <div class="about-card">
+                    <h3>💡 My Approach</h3>
+                    <p>I combine strategic thinking with creative problem-solving. Whether it's architecting scalable systems or crafting pixel-perfect interfaces, I focus on delivering quality solutions that exceed expectations.</p>
+                </div>
+            </div>
+
+            <div class="skills-section">
+                <h3>Skills & Technologies</h3>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Frontend Development</h4>
+                        <ul class="skill-list">
+                            <li>React / Next.js</li>
+                            <li>Vue.js / Nuxt</li>
+                            <li>TypeScript / JavaScript</li>
+                            <li>HTML5 / CSS3 / Sass</li>
+                            <li>Tailwind CSS</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Backend Development</h4>
+                        <ul class="skill-list">
+                            <li>Node.js / Express</li>
+                            <li>Python / Django</li>
+                            <li>PostgreSQL / MongoDB</li>
+                            <li>REST APIs / GraphQL</li>
+                            <li>Redis / Caching</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Tools & Platforms</h4>
+                        <ul class="skill-list">
+                            <li>Git / GitHub</li>
+                            <li>Docker / Kubernetes</li>
+                            <li>AWS / Azure</li>
+                            <li>CI/CD Pipelines</li>
+                            <li>Agile / Scrum</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Design & Other</h4>
+                        <ul class="skill-list">
+                            <li>UI/UX Design</li>
+                            <li>Figma / Adobe XD</li>
+                            <li>Responsive Design</li>
+                            <li>Performance Optimization</li>
+                            <li>Accessibility (A11y)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="social-links">
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+                <a href="#">Dev.to</a>
+            </div>
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Projects Page -->
+    <div id="projects" class="page">
+        <section class="content-section">
+            <div class="page-header">
+                <h1 class="page-title">My Projects</h1>
+                <p class="page-subtitle">A showcase of my recent work and creations</p>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">🚀</div>
+                    <div class="project-content">
+                        <h3>E-Commerce Platform</h3>
+                        <p>A full-featured online shopping platform with real-time inventory management, secure payment processing, and an intuitive admin dashboard.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
+                            <span class="tag">Stripe</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Demo →</a>
+                            <a href="#" class="project-link">GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">📱</div>
+                    <div class="project-content">
+                        <h3>Social Media Dashboard</h3>
+                        <p>Analytics dashboard for tracking social media metrics across multiple platforms with data visualization and automated reporting.</p>
+                        <div class="project-tags">
+                            <span class="tag">Vue.js</span>
+                            <span class="tag">D3.js</span>
+                            <span class="tag">Express</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Demo →</a>
+                            <a href="#" class="project-link">GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🎨</div>
+                    <div class="project-content">
+                        <h3>Portfolio Builder</h3>
+                        <p>A drag-and-drop portfolio website builder with customizable templates, allowing creatives to showcase their work without coding.</p>
+                        <div class="project-tags">
+                            <span class="tag">Next.js</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">Tailwind</span>
+                            <span class="tag">Supabase</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Demo →</a>
+                            <a href="#" class="project-link">GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🎮</div>
+                    <div class="project-content">
+                        <h3>Real-Time Game</h3>
+                        <p>Multiplayer browser game with WebSocket connections, featuring smooth animations, leaderboards, and in-game chat.</p>
+                        <div class="project-tags">
+                            <span class="tag">Three.js</span>
+                            <span class="tag">Socket.io</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Redis</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Demo →</a>
+                            <a href="#" class="project-link">GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">📊</div>
+                    <div class="project-content">
+                        <h3>Task Management App</h3>
+                        <p>Collaborative project management tool with kanban boards, time tracking, team collaboration features, and progress analytics.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">GraphQL</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Docker</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Demo →</a>
+                            <a href="#" class="project-link">GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">🤖</div>
+                    <div class="project-content">
+                        <h3>AI Writing Assistant</h3>
+                        <p>Intelligent writing tool that helps with content creation, grammar checking, and style improvements using machine learning.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">FastAPI</span>
+                            <span class="tag">React</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Demo →</a>
+                            <a href="#" class="project-link">GitHub →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="social-links">
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+                <a href="#">Dev.to</a>
+            </div>
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Experience Page -->
+    <div id="experience" class="page">
+        <section class="content-section">
+            <div class="page-header">
+                <h1 class="page-title">Experience</h1>
+                <p class="page-subtitle">My professional journey and achievements</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023 - Present</div>
+                        <h3>Senior Full Stack Developer</h3>
+                        <h4>Tech Innovations Inc.</h4>
+                        <p>Leading development of enterprise-scale web applications. Architecting microservices, mentoring junior developers, and implementing best practices for code quality and performance optimization.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021 - 2023</div>
+                        <h3>Full Stack Developer</h3>
+                        <h4>Digital Solutions Co.</h4>
+                        <p>Developed and maintained multiple client projects using modern JavaScript frameworks. Collaborated with design and product teams to deliver user-centric solutions that increased client satisfaction by 40%.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020 - 2021</div>
+                        <h3>Frontend Developer</h3>
+                        <h4>Creative Web Agency</h4>
+                        <p>Built responsive, accessible websites for various clients. Focused on performance optimization and modern UI/UX principles, resulting in improved user engagement metrics across all projects.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2019 - 2020</div>
+                        <h3>Junior Developer</h3>
+                        <h4>StartUp Ventures</h4>
+                        <p>Started my professional journey working on diverse projects. Gained experience in full-stack development, agile methodologies, and working with cross-functional teams.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2018 - 2019</div>
+                        <h3>Freelance Web Developer</h3>
+                        <h4>Self-Employed</h4>
+                        <p>Built websites and applications for small businesses and individuals. Learned to manage projects independently, communicate with clients, and deliver quality work within deadlines.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="social-links">
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+                <a href="#">Dev.to</a>
+            </div>
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Blog Page -->
+    <div id="blog" class="page">
+        <section class="content-section">
+            <div class="page-header">
+                <h1 class="page-title">Blog</h1>
+                <p class="page-subtitle">Thoughts, tutorials, and insights on web development</p>
+            </div>
+
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-image">📝</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>📅 Oct 5, 2025</span>
+                            <span>⏱️ 8 min read</span>
+                        </div>
+                        <h3>Building Scalable React Applications</h3>
+                        <p>Exploring best practices for structuring large-scale React applications, including component architecture, state management patterns, and performance optimization techniques.</p>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">🎨</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>📅 Sep 28, 2025</span>
+                            <span>⏱️ 6 min read</span>
+                        </div>
+                        <h3>Modern CSS Techniques in 2025</h3>
+                        <p>A deep dive into the latest CSS features including container queries, cascade layers, and new color functions that are changing how we build responsive designs.</p>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">🚀</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>📅 Sep 15, 2025</span>
+                            <span>⏱️ 10 min read</span>
+                        </div>
+                        <h3>Optimizing Web Performance</h3>
+                        <p>Practical strategies for improving website speed, including code splitting, lazy loading, image optimization, and leveraging modern browser APIs for better user experiences.</p>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">🔧</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>📅 Sep 1, 2025</span>
+                            <span>⏱️ 7 min read</span>
+                        </div>
+                        <h3>Mastering TypeScript Generics</h3>
+                        <p>Understanding advanced TypeScript patterns with generics, utility types, and how to write more flexible and reusable code that scales with your application.</p>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">🌐</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>📅 Aug 20, 2025</span>
+                            <span>⏱️ 9 min read</span>
+                        </div>
+                        <h3>Building RESTful APIs with Node.js</h3>
+                        <p>A comprehensive guide to creating robust, secure, and well-documented REST APIs using Express, including authentication, error handling, and best practices.</p>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">💡</div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span>📅 Aug 5, 2025</span>
+                            <span>⏱️ 5 min read</span>
+                        </div>
+                        <h3>The Future of Web Development</h3>
+                        <p>Exploring emerging trends and technologies that are shaping the future of web development, from WebAssembly to edge computing and beyond.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="social-links">
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+                <a href="#">Dev.to</a>
+            </div>
+            <p>&copy; 2025 Your Name. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update nav active state
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Update URL hash without scrolling
+            history.pushState(null, null, '#' + pageId);
+        }
+
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', function() {
+            const hash = window.location.hash.slice(1) || 'home';
+            const pages = ['home', 'about', 'projects', 'experience', 'blog'];
+            if (pages.includes(hash)) {
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                document.getElementById(hash).classList.add('active');
+                
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + hash) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+
+        // Load correct page on initial load based on URL hash
+        window.addEventListener('DOMContentLoaded', function() {
+            const hash = window.location.hash.slice(1);
+            if (hash && document.getElementById(hash)) {
+                showPage(hash);
+            }
+        });
+    </script>
+</body>
+</html>

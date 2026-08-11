@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Kai Zou — computer engineering student focused on positioning, navigation, autonomous systems, and research."
+  />
+  <meta name="theme-color" content="#f5f5f7" />
+  <title>Kai Zou — Research & Engineering</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="page-glow glow-one"></div>
+  <div class="page-glow glow-two"></div>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Home">KZ</a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+      </div>
+
+      <a class="nav-cta" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero container">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Computer Engineering · Research · Autonomous Systems</p>
+
+        <h1>
+          Building systems that
+          <span class="gradient-text">understand where they are.</span>
+        </h1>
+
+        <p class="hero-description">
+          I'm Kai Zou, a computer engineering student interested in positioning,
+          navigation, autonomous systems, embedded computing, and research that
+          moves from theory into real hardware.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects">Explore my work</a>
+          <a class="button button-secondary" href="#contact">Get in touch</a>
+        </div>
+      </div>
+
+      <div class="hero-card reveal delay-1">
+        <div class="hero-card-top">
+          <span class="status-dot"></span>
+          <span>Currently exploring</span>
+        </div>
+
+        <div class="hero-card-body">
+          <div class="orbital-visual" aria-hidden="true">
+            <div class="orbit orbit-a"></div>
+            <div class="orbit orbit-b"></div>
+            <div class="orbit orbit-c"></div>
+            <div class="core"></div>
+            <div class="satellite satellite-a"></div>
+            <div class="satellite satellite-b"></div>
+          </div>
+        </div>
+
+        <div class="hero-card-footer">
+          <p>GPS-denied navigation</p>
+          <span>GNSS · LiDAR · Sensor Fusion</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="metrics container reveal" aria-label="Highlights">
+      <article class="metric-card">
+        <span class="metric-number">500%</span>
+        <p>performance improvement achieved while profiling batched navigation code</p>
+      </article>
+
+      <article class="metric-card">
+        <span class="metric-number">80%+</span>
+        <p>manual inventory input reduction through barcode-driven automation</p>
+      </article>
+
+      <article class="metric-card">
+        <span class="metric-number">L1/L2/L5</span>
+        <p>GPS frequency bands explored through RF splitter and filter prototyping</p>
+      </article>
+    </section>
+
+    <section class="section container" id="about">
+      <div class="section-heading reveal">
+        <p class="eyebrow">About</p>
+        <h2>I like problems where software has to meet the physical world.</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-copy reveal">
+          <p>
+            My work sits between software, navigation, RF systems, embedded computing,
+            and autonomous platforms. I enjoy taking open-ended engineering problems
+            and turning them into systems that can be tested, measured, and improved.
+          </p>
+
+          <p>
+            I'm especially interested in positioning and navigation when GPS is weak
+            or unavailable, as well as the sensing and compute stack required to make
+            autonomous systems reliable.
+          </p>
+        </div>
+
+        <div class="info-card reveal delay-1">
+          <div class="info-row">
+            <span>School</span>
+            <strong>Rose-Hulman Institute of Technology</strong>
+          </div>
+          <div class="info-row">
+            <span>Focus</span>
+            <strong>Computer Engineering</strong>
+          </div>
+          <div class="info-row">
+            <span>Interests</span>
+            <strong>PNT, autonomy, RF, embedded systems</strong>
+          </div>
+          <div class="info-row">
+            <span>Based in</span>
+            <strong>Indiana, USA</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="research">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Research interests</p>
+        <h2>Questions I want to keep pursuing.</h2>
+      </div>
+
+      <div class="research-grid">
+        <article class="research-card reveal">
+          <div class="card-index">01</div>
+          <h3>GPS-denied navigation</h3>
+          <p>
+            Combining inertial sensing, LiDAR, vision, and other positioning sources
+            to keep autonomous systems localized when GNSS becomes unreliable.
+          </p>
+          <div class="tag-row">
+            <span>Sensor fusion</span>
+            <span>PNT</span>
+            <span>SLAM</span>
+          </div>
+        </article>
+
+        <article class="research-card reveal delay-1">
+          <div class="card-index">02</div>
+          <h3>Navigation algorithms</h3>
+          <p>
+            Building efficient coordinate transforms, covariance propagation tools,
+            and batched numerical routines for production navigation software.
+          </p>
+          <div class="tag-row">
+            <span>C++</span>
+            <span>Python</span>
+            <span>GNSS</span>
+          </div>
+        </article>
+
+        <article class="research-card reveal delay-2">
+          <div class="card-index">03</div>
+          <h3>Autonomous sensing</h3>
+          <p>
+            Exploring how embedded compute, sensor interfaces, and real-time perception
+            can enable robust autonomous aircraft and robotics.
+          </p>
+          <div class="tag-row">
+            <span>LiDAR</span>
+            <span>Embedded</span>
+            <span>Robotics</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="projects">
+      <div class="section-heading split-heading reveal">
+        <div>
+          <p class="eyebrow">Selected projects</p>
+          <h2>Built to learn. Built to work.</h2>
+        </div>
+
+        <a class="text-link" href="https://github.com/" target="_blank" rel="noreferrer">
+          View GitHub
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card project-featured reveal">
+          <div class="project-visual lidar-visual">
+            <div class="scan-line"></div>
+            <div class="point point-1"></div>
+            <div class="point point-2"></div>
+            <div class="point point-3"></div>
+            <div class="point point-4"></div>
+            <div class="point point-5"></div>
+          </div>
+
+          <div class="project-content">
+            <div>
+              <p class="project-kicker">Independent research</p>
+              <h3>LiDAR SLAM Platform</h3>
+              <p>
+                Repairing and integrating a LiDAR sensor to explore simultaneous
+                localization and mapping, autonomous perception, and GPS-independent
+                positioning.
+              </p>
+            </div>
+
+            <div class="project-footer">
+              <div class="tag-row">
+                <span>LiDAR</span>
+                <span>SLAM</span>
+                <span>Jetson</span>
+              </div>
+              <span class="arrow">↗</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal delay-1">
+          <div class="project-visual rf-visual">
+            <div class="rf-wave wave-1"></div>
+            <div class="rf-wave wave-2"></div>
+            <div class="rf-wave wave-3"></div>
+            <div class="rf-chip">GPS</div>
+          </div>
+
+          <div class="project-content">
+            <div>
+              <p class="project-kicker">RF engineering</p>
+              <h3>Wilkinson GPS Splitter</h3>
+              <p>
+                Designed and prototyped splitter/filter concepts for GPS L1, L2,
+                and L5 while profiling gain, isolation, and frequency response.
+              </p>
+            </div>
+
+            <div class="project-footer">
+              <div class="tag-row">
+                <span>RF</span>
+                <span>LTspice</span>
+                <span>GPS</span>
+              </div>
+              <span class="arrow">↗</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-visual code-visual" aria-hidden="true">
+            <div class="code-window">
+              <div class="code-dots"><i></i><i></i><i></i></div>
+              <div class="code-line w-80"></div>
+              <div class="code-line w-65"></div>
+              <div class="code-line w-90"></div>
+              <div class="code-line w-55"></div>
+              <div class="code-line w-75"></div>
+            </div>
+          </div>
+
+          <div class="project-content">
+            <div>
+              <p class="project-kicker">Developer tooling</p>
+              <h3>Navigation Toolkit Optimization</h3>
+              <p>
+                Developed and profiled batched GNSS navigation functions and improved
+                CI/CD infrastructure for a cross-platform C++ / Python codebase.
+              </p>
+            </div>
+
+            <div class="project-footer">
+              <div class="tag-row">
+                <span>C++</span>
+                <span>Python</span>
+                <span>Docker</span>
+              </div>
+              <span class="arrow">↗</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal delay-1">
+          <div class="project-visual inventory-visual">
+            <div class="barcode">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="scan-beam"></div>
+          </div>
+
+          <div class="project-content">
+            <div>
+              <p class="project-kicker">Automation</p>
+              <h3>Parts Inventory System</h3>
+              <p>
+                Built a barcode-first desktop inventory workflow integrating supplier
+                APIs, Excel storage, search, and automated Git synchronization.
+              </p>
+            </div>
+
+            <div class="project-footer">
+              <div class="tag-row">
+                <span>Python</span>
+                <span>APIs</span>
+                <span>Automation</span>
+              </div>
+              <span class="arrow">↗</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container" id="experience">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Experience</p>
+        <h2>Engineering across software and hardware.</h2>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <div class="timeline-meta">
+            <span>2026</span>
+            <span>Dayton, Ohio</span>
+          </div>
+
+          <div class="timeline-body">
+            <h3>Integrated Solutions for Systems</h3>
+            <p class="role">Software Engineering & PNT Intern</p>
+            <p>
+              Worked on GNSS navigation utilities, batched numerical algorithms,
+              CI/CD infrastructure, GPS RF prototyping, and internal engineering automation.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-meta">
+            <span>2025 — Present</span>
+            <span>Indiana</span>
+          </div>
+
+          <div class="timeline-body">
+            <h3>AdBridge</h3>
+            <p class="role">Co-Founder & Developer</p>
+            <p>
+              Building a full-stack platform with React, Next.js, Node.js, authentication,
+              object storage, and subscription-focused product architecture.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-meta">
+            <span>2021 — 2025</span>
+            <span>Evansville, Indiana</span>
+          </div>
+
+          <div class="timeline-body">
+            <h3>Chief Computer Systems</h3>
+            <p class="role">Computer Hardware Technician</p>
+            <p>
+              Repaired and refurbished computer hardware at scale, including precision
+              board-level work and GPU diagnostics.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="skills-panel reveal">
+        <div>
+          <p class="eyebrow">Toolbox</p>
+          <h2>Things I build with.</h2>
+        </div>
+
+        <div class="skills-cloud">
+          <span>C++</span>
+          <span>Python</span>
+          <span>Java</span>
+          <span>JavaScript</span>
+          <span>React</span>
+          <span>Next.js</span>
+          <span>Docker</span>
+          <span>Linux</span>
+          <span>Git</span>
+          <span>Meson</span>
+          <span>KiCad</span>
+          <span>LTspice</span>
+          <span>MATLAB</span>
+          <span>Embedded Systems</span>
+          <span>GNSS / PNT</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section container" id="contact">
+      <div class="contact-card reveal">
+        <p class="eyebrow">Let's build something interesting.</p>
+        <h2>Research, engineering, or ambitious side projects.</h2>
+
+        <p>
+          I'm always interested in meeting people working on navigation,
+          robotics, embedded systems, aerospace, and research-driven engineering.
+        </p>
+
+        <div class="contact-actions">
+          <a class="button button-primary" href="mailto:your-email@example.com">
+            Email me
+          </a>
+          <a
+            class="button button-secondary"
+            href="https://www.linkedin.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            LinkedIn
+          </a>
+          <a
+            class="button button-secondary"
+            href="https://github.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <p>© <span id="year"></span> Kai Zou</p>
+    <p>Designed for curiosity.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
